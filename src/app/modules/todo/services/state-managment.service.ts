@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ToDo } from '../models/todo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,9 @@ export class StateManagmentService {
   loadState() {
     const stateJSON = localStorage.getItem(this.stateKey);
     if (stateJSON) {
-      this.stateSubject.next(JSON.parse(stateJSON));
+      const parsedState = JSON.parse(stateJSON);
+      const todos = parsedState.map((todoJSON: any) => ToDo.fromJSON(todoJSON));
+      this.stateSubject.next(todos);
     }
   }
 

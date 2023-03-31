@@ -8,4 +8,9 @@ export class ToDo {
     this.title = title;
     this.completed = completed;
   }
+
+  static fromJSON(json: any): ToDo {
+    const todo = new ToDo(json.id, json.title, json.completed);
+    return todo;
+  }
 }
