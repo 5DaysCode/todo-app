@@ -1,1 +1,8 @@
-<p>todo-input works!</p>
+<div class="todo-input">
+  <input
+    [(ngModel)]="title"
+    (keyup.enter)="addTodo()"
+    placeholder="What needs to be done?"
+  />
+  <button (click)="addTodo()">Add</button>
+</div>
