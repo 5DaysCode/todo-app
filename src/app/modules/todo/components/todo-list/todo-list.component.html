@@ -1,1 +1,9 @@
-<p>todo-list works!</p>
+<ul class="todo-list">
+  <li *ngFor="let todo of todos$ | async">
+    <app-todo-item
+      [todo]="todo"
+      (toggle)="toggle(todo)"
+      (remove)="remove(todo)"
+    ></app-todo-item>
+  </li>
+</ul>
